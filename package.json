@@ -1,0 +1,17 @@
+{
+  "name": "studyflow",
+  "version": "1.0.0",
+  "description": "Premium Study Tracker & Note-taking application for students",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "study",
+    "tracker",
+    "pomodoro",
+    "notes"
+  ],
+  "author": "Scholar",
+  "license": "MIT"
+}

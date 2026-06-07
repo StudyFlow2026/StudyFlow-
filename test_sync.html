@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Sync Integration Tests</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Test Results Banner -->
+  <div id="test-results-panel" style="position: fixed; top: 0; left: 0; right: 0; background: #000; color: #fff; z-index: 99999; padding: 20px; max-height: 50vh; overflow-y: auto; border-bottom: 2px solid var(--accent-primary);">
+    <h2 style="margin: 0 0 10px 0; font-size: 18px; display: flex; justify-content: space-between;">
+      <span>Cross-Origin Automatic Profile Sync Integration Tests</span>
+      <span id="test-badge" class="running" style="padding: 2px 8px; border-radius: 4px; font-size: 14px;">RUNNING</span>
+    </h2>
+    <div id="test-results-log"></div>
+  </div>
+
+  <style>
+    #test-badge.running { background: #f39c12; color: #fff; }
+    #test-badge.passed { background: #2ecc71; color: #fff; }
+    #test-badge.failed { background: #e74c3c; color: #fff; }
+  </style>
+
+  <div class="app-container">
+    <h1 style="margin: 80px auto 20px; text-align: center; color: var(--text-primary);">Sync Verification Environment</h1>
+    <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
+      This page mounts the synchronization integration test script. The panel above displays assertions as they run against the local static sync API endpoints.
+    </p>
+  </div>
+
+  <!-- Main JavaScript App module entry -->
+  <script type="module" src="src/js/app.js"></script>
+  <!-- Sync verification script -->
+  <script type="module" src="test_sync.js"></script>
+</body>
+</html>

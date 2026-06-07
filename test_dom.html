@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Ultimate Student Dashboard &amp; Planner</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background decorative blur shapes -->
+  <div class="blobblob blob-1"></div>
+  <div class="blobblob blob-2"></div>
+  <div class="blobblob blob-3"></div>
+
+  <div class="app-container">
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" aria-hidden="true" class="lucide lucide-graduation-cap lucide-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+          </div>
+          <span class="logo-text">StudyFlow</span>
+        </div>
+      </div>
+      
+      <!-- User Profile Widget -->
+      <div class="user-profile-widget">
+        <div class="avatar" id="user-avatar">S</div>
+        <div class="user-info">
+          <div class="user-name" id="user-name-display">Scholar Mode</div>
+          <div class="streak-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="flame" aria-hidden="true" class="lucide lucide-flame lucide-icon"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"></path></svg>
+            <span id="sidebar-streak-count">0</span> day streak
+          </div>
+        </div>
+        <button class="logout-btn" id="logout-trigger-btn" title="Logout Account">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" aria-hidden="true" class="lucide lucide-log-out lucide-icon"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+        </button>
+      </div>
+      
+      <!-- Nav Links -->
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-tab="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" aria-hidden="true" class="lucide lucide-layout-dashboard lucide-icon"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-btn" data-tab="planner">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-square" aria-hidden="true" class="lucide lucide-check-square lucide-icon"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"></path><path d="m9 11 3 3L22 4"></path></svg>
+          <span>Study Planner</span>
+        </button>
+        <button class="nav-btn" data-tab="timer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" aria-hidden="true" class="lucide lucide-timer lucide-icon"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
+          <span>Focus Room</span>
+        </button>
+        <button class="nav-btn" data-tab="notes">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open lucide-icon"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+          <span>Notes</span>
+        </button>
+        <button class="nav-btn" data-tab="analytics">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-2" aria-hidden="true" class="lucide lucide-bar-chart-2 lucide-icon"><path d="M5 21v-6"></path><path d="M12 21V3"></path><path d="M19 21V9"></path></svg>
+          <span>Analytics</span>
+        </button>
+        <button class="nav-btn" data-tab="friends" id="nav-btn-friends">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-square" aria-hidden="true" class="lucide lucide-message-square lucide-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Chat Room</span>
+        </button>
+        <button class="nav-btn" data-tab="ai">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles lucide-icon"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"></path><path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5Z"></path><path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z"></path></svg>
+          <span>FlowAI Assistant</span>
+        </button>
+        <button class="nav-btn" data-tab="settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="settings" aria-hidden="true" class="lucide lucide-settings lucide-icon"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+      
+      <!-- Sidebar Footer / Theme Controls -->
+      <div class="sidebar-footer">
+        <div class="theme-toggle-container">
+          <button class="theme-opt active" data-theme="dark" title="Dark Glass Mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="moon" aria-hidden="true" class="lucide lucide-moon lucide-icon"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+          </button>
+          <button class="theme-opt" data-theme="light" title="Light Glass Mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sun" aria-hidden="true" class="lucide lucide-sun lucide-icon"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          </button>
+          <button class="theme-opt" data-theme="sepia" title="Cozy Sepia Mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-marked" aria-hidden="true" class="lucide lucide-book-marked lucide-icon"><path d="M10 2v8l3-3 3 3V2"></path><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle-btn" title="Open Sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" aria-hidden="true" class="lucide lucide-menu lucide-icon"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+          </button>
+          <div>
+            <h1 id="header-title">Welcome back, Scholar</h1>
+            <p id="header-subtitle" class="header-date">Wednesday, May 27, 2026</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-secondary" id="quick-pomodoro-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="play-circle" aria-hidden="true" class="lucide lucide-play-circle lucide-icon"><path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"></path><circle cx="12" cy="12" r="10"></circle></svg> Quick Focus
+          </button>
+          <button class="btn btn-primary" id="quick-task-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus lucide-icon"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Add Task
+          </button>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <div class="view-content">
+
+        <!-- 1. DASHBOARD VIEW -->
+        <section id="view-dashboard" class="app-view active">
+          <!-- Overview Cards -->
+          <div class="dashboard-stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon focus-time-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" aria-hidden="true" class="lucide lucide-clock lucide-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div>
+              <div class="stat-data">
+                <span class="stat-label">Focus Time</span>
+                <h3 id="stat-focus-time">0h 0m</h3>
+                <span class="stat-trend trend-up"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trending-up" aria-hidden="true" class="lucide lucide-trending-up lucide-icon"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg> Active today</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon tasks-completed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 lucide-icon"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></div>
+              <div class="stat-data">
+                <span class="stat-label">Tasks Completed</span>
+                <h3 id="stat-tasks-done">0 / 0</h3>
+                <span class="stat-trend" id="stat-tasks-rate">0% completed</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon current-streak-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="flame" aria-hidden="true" class="lucide lucide-flame lucide-icon"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"></path></svg></div>
+              <div class="stat-data">
+                <span class="stat-label">Study Streak</span>
+                <h3 id="stat-streak">0 Days</h3>
+                <span class="stat-trend" id="stat-streak-msg">Complete a focus session today!</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon focus-score-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap lucide-icon"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></div>
+              <div class="stat-data">
+                <span class="stat-label">Focus Score</span>
+                <h3 id="stat-focus-score">100%</h3>
+                <span class="stat-trend" id="stat-score-msg">Excellent focus quality!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="dashboard-charts-grid">
+            <!-- Left Chart: Study Distribution -->
+            <div class="dashboard-card chart-card">
+              <div class="card-header">
+                <h3>Weekly Study distribution (Hours)</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-3" aria-hidden="true" class="lucide lucide-bar-chart-3 lucide-icon"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+              </div>
+              <div class="chart-container" id="weekly-svg-chart-container">
+    <svg width="100%" height="100%" viewBox="0 0 450 200" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--accent-primary)"></stop>
+          <stop offset="100%" stop-color="var(--accent-secondary)"></stop>
+        </linearGradient>
+      </defs>
+      
+      <line x1="30" y1="15" x2="440" y2="15" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="22" y="19" fill="var(--text-tertiary)" font-size="10" font-family="var(--font-sans)" text-anchor="end">4.0h</text>
+    
+      <line x1="30" y1="55" x2="440" y2="55" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="22" y="59" fill="var(--text-tertiary)" font-size="10" font-family="var(--font-sans)" text-anchor="end">3.0h</text>
+    
+      <line x1="30" y1="95" x2="440" y2="95" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="22" y="99" fill="var(--text-tertiary)" font-size="10" font-family="var(--font-sans)" text-anchor="end">2.0h</text>
+    
+      <line x1="30" y1="135" x2="440" y2="135" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="22" y="139" fill="var(--text-tertiary)" font-size="10" font-family="var(--font-sans)" text-anchor="end">1.0h</text>
+    
+      <line x1="30" y1="175" x2="440" y2="175" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="22" y="179" fill="var(--text-tertiary)" font-size="10" font-family="var(--font-sans)" text-anchor="end">0.0h</text>
+    
+      
+      <g>
+        <rect class="bar-chart-bar" x="47.285714285714285" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="59.285714285714285" y="194">Thu</text>
+        <title>Thu: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="105.85714285714286" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="117.85714285714286" y="194">Fri</text>
+        <title>Fri: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="164.42857142857142" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="176.42857142857142" y="194">Sat</text>
+        <title>Sat: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="223" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="235" y="194">Sun</text>
+        <title>Sun: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="281.57142857142856" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="293.57142857142856" y="194">Mon</text>
+        <title>Mon: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="340.1428571428571" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="352.1428571428571" y="194">Tue</text>
+        <title>Tue: 0 hours study time</title>
+      </g>
+    
+      <g>
+        <rect class="bar-chart-bar" x="398.7142857142857" y="175" width="24" height="2" rx="4" fill="url(#chart-grad)"></rect>
+        <text class="bar-chart-text" x="410.7142857142857" y="194">Wed</text>
+        <title>Wed: 0 hours study time</title>
+      </g>
+    
+    </svg>
+  </div>
+            </div>
+            
+            <!-- Right Chart: Target Goal -->
+            <div class="dashboard-card chart-card flex-center">
+              <div class="card-header">
+                <h3>Daily Study Goal Progress</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="target" aria-hidden="true" class="lucide lucide-target lucide-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              </div>
+              <div class="goal-progress-container">
+                <div class="circular-progress-wrapper">
+                  <svg class="circular-progress-svg" viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="42"></circle>
+                    <circle class="circle-progress" id="dashboard-goal-ring" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="264" style="stroke-dashoffset: 264;"></circle>
+                  </svg>
+                  <div class="goal-text">
+                    <span id="dashboard-goal-percentage" class="percentage">0%</span>
+                    <span id="dashboard-goal-duration" class="subtext">0.0 / 2.0 hours</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Grid: Quick notes & Tasks -->
+          <div class="dashboard-details-grid">
+            <!-- Tasks widget -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <h3>Focus Tasks For Today</h3>
+                <a href="#" class="view-all-link" data-tab-link="planner">View planner <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right lucide-icon"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+              <div class="widget-list" id="widget-today-tasks"><div class="list-placeholder">No active tasks. Create one to get started!</div></div>
+            </div>
+
+            <!-- Notes widget -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <h3>Recent Notes Pages</h3>
+                <a href="#" class="view-all-link" data-tab-link="notes">Open notes <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right lucide-icon"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+              <div class="widget-list" id="widget-recent-notes"><div class="list-placeholder">No notes found. Write your first page in Notes!</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FlowAI ASSISTANT VIEW -->
+        <section id="view-ai" class="app-view">
+          <div class="ai-container" style="display: flex; height: calc(100vh - 140px); min-height: 480px; gap: 20px; margin-bottom: 0;">
+            
+            <!-- AI Sidebar for Chat History -->
+            <div class="ai-sidebar" style="width: 260px; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; backdrop-filter: blur(10px);">
+              <button type="button" class="btn btn-primary" id="btn-new-chat" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; width: 100%; height: 40px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); border: none; border-radius: var(--radius-md); color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">
+                <i data-lucide="plus-circle" style="width: 18px; height: 18px;"></i>
+                <span>New Chat</span>
+              </button>
+              
+              <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-top: 8px;">Recent Chats</div>
+              
+              <div id="ai-history-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px;">
+                <!-- Chat list items dynamically populated -->
+              </div>
+            </div>
+            
+            <!-- Main Chat Box Area -->
+            <div class="card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 0; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+              <!-- Header with controls -->
+              <div class="card-header" style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; height: auto;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <div style="width: 38px; height: 38px; border-radius: var(--radius-md); background: rgba(108, 92, 231, 0.12); color: var(--accent-primary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+                  </div>
+                  <div>
+                    <h3 style="margin: 0; font-size: 16px; font-weight: 600;" id="ai-current-title">FlowAI Assistant</h3>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: var(--text-tertiary);" id="ai-status-label">Offline Mode</p>
+                  </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                  <!-- Persona Selector -->
+                  <div style="display: flex; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 2px;" id="ai-persona-selector">
+                    <button type="button" class="persona-chip active" data-persona="coach" style="background: transparent; border: none; padding: 6px 12px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 4px; transition: var(--transition-smooth);" title="Study Coach">
+                      <i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i>
+                      <span class="persona-text">Coach</span>
+                    </button>
+
+                    <button type="button" class="persona-chip" data-persona="wizard" style="background: transparent; border: none; padding: 6px 12px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 4px; transition: var(--transition-smooth);" title="Summary Wizard">
+                      <i data-lucide="file-text" style="width: 14px; height: 14px;"></i>
+                      <span class="persona-text">Wizard</span>
+                    </button>
+                    <button type="button" class="persona-chip" data-persona="quiz" style="background: transparent; border: none; padding: 6px 12px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 4px; transition: var(--transition-smooth);" title="Quiz Master">
+                      <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i>
+                      <span class="persona-text">Quiz</span>
+                    </button>
+                  </div>
+
+                  <!-- Model Selector -->
+                  <select id="ai-model-select" style="background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-md); padding: 6px 10px; font-size: 11px; outline: none; font-weight: 500; cursor: pointer; height: 28px;">
+                    <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                    <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+                    <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                  </select>
+
+                  <button type="button" id="btn-clear-chat" class="btn btn-secondary" style="height: 28px; padding: 0 8px; font-size: 11px; display: flex; align-items: center; gap: 4px; border-radius: var(--radius-md);" title="Clear current chat">
+                    <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i>
+                    <span>Clear</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Chat Messages Panel -->
+              <div class="chat-messages-container" id="ai-chat-messages" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; font-size: 13px; line-height: 1.5;">
+                <!-- Chat content loaded dynamically -->
+              </div>
+  
+              <!-- Typing Indicator -->
+              <div class="chat-typing-indicator" id="ai-typing-indicator" style="display: none; align-self: flex-start; padding: 10px 16px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px 12px 12px 0; margin-left: 20px; margin-bottom: 12px; font-size: 12px; color: var(--text-tertiary);">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span class="pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-primary); display: inline-block;"></span>
+                  <span>FlowAI is thinking...</span>
+                </div>
+              </div>
+  
+              <!-- Chat Input Box -->
+              <form class="chat-input-wrapper" id="ai-chat-form" style="border-top: 1px solid var(--border-color); padding: 16px 20px; display: flex; gap: 10px; background: rgba(0,0,0,0.15); align-items: flex-end;">
+                <textarea id="ai-chat-input" placeholder="Ask FlowAI anything... (Shift+Enter for newline, Enter to send)" style="flex: 1; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 10px 16px; color: var(--text-primary); font-size: 13px; outline: none; font-family: var(--font-sans); resize: none; max-height: 120px; height: 40px; line-height: 1.4;" required autocomplete="off"></textarea>
+                <button type="submit" class="btn btn-primary" style="padding: 0 16px; display: flex; align-items: center; justify-content: center; height: 40px; width: 40px; min-width: auto; border-radius: var(--radius-md); flex-shrink: 0;" title="Send Message">
+                  <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. STUDY PLANNER VIEW (KANBAN) -->
+        <section id="view-planner" class="app-view">
+          <div class="planner-controls">
+            <div class="search-filter-bar">
+              <div class="search-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search lucide-icon"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                <input type="text" id="planner-search" placeholder="Search tasks by name or tag...">
+              </div>
+              <select id="planner-subject-filter">
+                <option value="all">All Subjects</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="kanban-board">
+            <!-- Column 1: To Do -->
+            <div class="kanban-column" id="col-todo" data-status="todo">
+              <div class="column-header">
+                <span class="column-dot dot-todo"></span>
+                <h3>To Do</h3>
+                <span class="column-count" id="count-todo">0</span>
+              </div>
+              <div class="column-cards" id="cards-todo">
+                <!-- Cards added dynamically -->
+              </div>
+              <button class="add-card-btn" data-status="todo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus lucide-icon"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Add Task
+              </button>
+            </div>
+
+            <!-- Column 2: In Progress -->
+            <div class="kanban-column" id="col-inprogress" data-status="inprogress">
+              <div class="column-header">
+                <span class="column-dot dot-progress"></span>
+                <h3>In Progress</h3>
+                <span class="column-count" id="count-inprogress">0</span>
+              </div>
+              <div class="column-cards" id="cards-inprogress">
+                <!-- Cards added dynamically -->
+              </div>
+              <button class="add-card-btn" data-status="inprogress">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus lucide-icon"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Add Task
+              </button>
+            </div>
+
+            <!-- Column 3: Completed -->
+            <div class="kanban-column" id="col-completed" data-status="completed">
+              <div class="column-header">
+                <span class="column-dot dot-completed"></span>
+                <h3>Completed</h3>
+                <span class="column-count" id="count-completed">0</span>
+              </div>
+              <div class="column-cards" id="cards-completed">
+                <!-- Cards added dynamically -->
+              </div>
+              <button class="add-card-btn" data-status="completed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus lucide-icon"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Add Task
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. FOCUS ROOM VIEW (POMODORO) -->
+        <section id="view-timer" class="app-view">
+          <div class="focus-room-layout">
+            <!-- Left Side: Interactive Timer -->
+            <div class="timer-display-box">
+              <div class="timer-presets">
+                <button class="preset-btn active" data-mode="pomodoro">Pomodoro</button>
+                <button class="preset-btn" data-mode="short">Short Break</button>
+                <button class="preset-btn" data-mode="long">Long Break</button>
+              </div>
+
+              <!-- Breathing visual background circle -->
+              <div class="breath-ring-wrapper">
+                <div class="breath-ring-bg"></div>
+                <div class="breath-ring" id="timer-breath-ring" style="transform: scale(1);"></div>
+                
+                <!-- Main digital display -->
+                <div class="timer-countdown">
+                  <h2 id="timer-clock">25:00</h2>
+                  <span id="timer-status-text">Ready to focus?</span>
+                </div>
+              </div>
+
+              <div class="timer-controls-row">
+                <button class="btn-timer btn-timer-sec" id="timer-reset" title="Reset Session">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="rotate-ccw" aria-hidden="true" class="lucide lucide-rotate-ccw lucide-icon"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                </button>
+                <button class="btn-timer btn-timer-main" id="timer-start" title="Start Focus">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="play" aria-hidden="true" class="lucide lucide-play lucide-icon" id="timer-start-icon"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
+                </button>
+                <button class="btn-timer btn-timer-sec" id="timer-skip" title="Skip Session">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="skip-forward" aria-hidden="true" class="lucide lucide-skip-forward lucide-icon"><path d="M21 4v16"></path><path d="M6.029 4.285A2 2 0 0 0 3 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z"></path></svg>
+                </button>
+              </div>
+              
+              <div class="timer-session-tally">
+                <span id="timer-session-info">Session #1 • Daily Target: 4 focus sessions</span>
+                <div class="session-dots" id="timer-session-dots">
+                  <span class="session-dot"></span>
+                  <span class="session-dot"></span>
+                  <span class="session-dot"></span>
+                  <span class="session-dot"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Ambient Sound Machine + Focus Settings -->
+            <div class="focus-settings-box">
+              <div class="settings-card" id="focus-ambient-sound-card">
+                <h3>Ambient Sound Mixer</h3>
+                <p class="section-desc">Create your study soundtrack. Adjust channels independently.</p>
+                
+                <div class="sound-mixer">
+                  <!-- Rain sound channel -->
+                  <div class="sound-channel" data-sound="rain">
+                    <div class="channel-info">
+                      <button class="sound-mute-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-rain" aria-hidden="true" class="lucide lucide-cloud-rain lucide-icon"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg></button>
+                      <span class="sound-label">Cosy Rain</span>
+                    </div>
+                    <input type="range" class="sound-volume-slider" min="0" max="100" value="0">
+                  </div>
+                  <!-- Cafe sound channel -->
+                  <div class="sound-channel" data-sound="cafe">
+                    <div class="channel-info">
+                      <button class="sound-mute-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="coffee" aria-hidden="true" class="lucide lucide-coffee lucide-icon"><path d="M10 2v2"></path><path d="M14 2v2"></path><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"></path><path d="M6 2v2"></path></svg></button>
+                      <span class="sound-label">Parisian Cafe</span>
+                    </div>
+                    <input type="range" class="sound-volume-slider" min="0" max="100" value="0">
+                  </div>
+                  <!-- Binaural Waves channel -->
+                  <div class="sound-channel" data-sound="waves">
+                    <div class="channel-info">
+                      <button class="sound-mute-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="waves" aria-hidden="true" class="lucide lucide-waves lucide-icon"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0"></path><path d="M2 19q2.5 2 5 0t5 0 5 0 5 0"></path><path d="M2 5q2.5 2 5 0t5 0 5 0 5 0"></path></svg></button>
+                      <span class="sound-label">Binaural Waves</span>
+                    </div>
+                    <input type="range" class="sound-volume-slider" min="0" max="100" value="0">
+                  </div>
+                  <!-- Forest channel -->
+                  <div class="sound-channel" data-sound="forest">
+                    <div class="channel-info">
+                      <button class="sound-mute-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trees" aria-hidden="true" class="lucide lucide-trees lucide-icon"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"></path><path d="M7 16v6"></path><path d="M13 19v3"></path><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"></path></svg></button>
+                      <span class="sound-label">Deep Forest</span>
+                    </div>
+                    <input type="range" class="sound-volume-slider" min="0" max="100" value="0">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Task Binding card -->
+              <div class="settings-card">
+                <h3>Bind to Active Task</h3>
+                <p class="section-desc">Track study metrics directly to a planner item.</p>
+                <div class="task-binder">
+                  <select id="timer-task-binder"><option value="">None (General Study)</option></select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. NOTION-LIKE NOTES WORKSPACE -->
+        <section id="view-notes" class="app-view">
+          <div class="notes-workspace-layout">
+            <!-- Notes Sub-Sidebar (Pages list) -->
+            <div class="notes-sidebar">
+              <div class="notes-sidebar-header">
+                <h3>Notebook Pages</h3>
+                <button class="btn-icon" id="add-page-btn" title="Create new notebook page">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus-circle" aria-hidden="true" class="lucide lucide-plus-circle lucide-icon"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+                </button>
+              </div>
+              <div class="notes-page-list" id="notes-pages-tree">
+                <!-- Pages list added dynamically -->
+              </div>
+            </div>
+
+            <!-- Main Notion-like block editor -->
+            <div class="notes-editor-container">
+              <div class="notes-editor-empty-state" id="editor-empty-state">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open lucide-icon"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+                <h3>No Page Open</h3>
+                <p>Select an existing page from the sidebar or create a new one to start drafting notes in your Notes editor.</p>
+                <button class="btn btn-primary" id="editor-create-first-page-btn">Create First Page</button>
+              </div>
+
+              <div class="notes-editor-active" id="editor-active-state" style="display: none;">
+                <!-- Editor Header -->
+                <div class="editor-header">
+                  <button class="btn btn-secondary btn-sm" id="notes-back-to-sidebar-btn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-left" aria-hidden="true" class="lucide lucide-arrow-left lucide-icon"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> Back
+                  </button>
+                  <div class="page-meta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text lucide-icon"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                    <span id="editor-page-subject">General Notes</span>
+                  </div>
+                  <div class="editor-actions">
+                    <span class="auto-save-tag"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-lightning" aria-hidden="true" class="lucide lucide-cloud-lightning lucide-icon"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg> Autosaved</span>
+                    <button class="btn-icon delete-btn" id="delete-current-page-btn" title="Delete Page">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2 lucide-icon"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Page Title -->
+                <div class="editor-title-container">
+                  <input type="text" id="editor-page-title" placeholder="Untitled Page">
+                </div>
+
+                <!-- Notion Blocks Container -->
+                <div class="editor-blocks-workspace" id="editor-blocks-container">
+                  <!-- Blocks will be populated dynamically -->
+                </div>
+                
+                <!-- Helper instructions -->
+                <div class="editor-helper-hint">
+                  <span class="hint-label">Tips:</span> Type <kbd>/</kbd> to insert rich headers, callouts, lists, or code blocks. Use <kbd>Enter</kbd> to add a new line, and <kbd>Backspace</kbd> on an empty block to clear it.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rich Block Menu Command Overlay -->
+          <div class="slash-commands-menu" id="slash-menu" style="display: none;">
+            <div class="menu-title">Insert Block</div>
+            <div class="menu-options-list">
+              <button class="slash-item" data-block-type="h1">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heading-1" aria-hidden="true" class="lucide lucide-heading-1 lucide-icon"><path d="M4 12h8"></path><path d="M4 18V6"></path><path d="M12 18V6"></path><path d="m17 12 3-2v8"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Heading 1</span>
+                  <span class="item-desc">Big section title</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="h2">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heading-2" aria-hidden="true" class="lucide lucide-heading-2 lucide-icon"><path d="M4 12h8"></path><path d="M4 18V6"></path><path d="M12 18V6"></path><path d="M21 18h-4c0-4 4-3 4-6 0-1.5-2-2.5-4-1"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Heading 2</span>
+                  <span class="item-desc">Medium section title</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="h3">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="heading-3" aria-hidden="true" class="lucide lucide-heading-3 lucide-icon"><path d="M4 12h8"></path><path d="M4 18V6"></path><path d="M12 18V6"></path><path d="M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2"></path><path d="M17 17.5c2 1.5 4 .3 4-1.5a2 2 0 0 0-2-2"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Heading 3</span>
+                  <span class="item-desc">Small section subtitle</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="bullet">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="list" aria-hidden="true" class="lucide lucide-list lucide-icon"><path d="M3 5h.01"></path><path d="M3 12h.01"></path><path d="M3 19h.01"></path><path d="M8 5h13"></path><path d="M8 12h13"></path><path d="M8 19h13"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Bulleted List</span>
+                  <span class="item-desc">Create a simple bulleted list</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="todo">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-square" aria-hidden="true" class="lucide lucide-check-square lucide-icon"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"></path><path d="m9 11 3 3L22 4"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">To-do List</span>
+                  <span class="item-desc">Checkbox tasks inside notes</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="callout">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" aria-hidden="true" class="lucide lucide-info lucide-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Callout Box</span>
+                  <span class="item-desc">Highlight important details</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="code">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" aria-hidden="true" class="lucide lucide-code-2 lucide-icon"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Code Block</span>
+                  <span class="item-desc">Preformatted programming script block</span>
+                </div>
+              </button>
+              <button class="slash-item" data-block-type="divider">
+                <div class="item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" aria-hidden="true" class="lucide lucide-minus lucide-icon"><path d="M5 12h14"></path></svg></div>
+                <div class="item-details">
+                  <span class="item-title">Divider</span>
+                  <span class="item-desc">Visually separate segments</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. ANALYTICS LOG VIEW -->
+        <section id="view-analytics" class="app-view">
+          <!-- Main charts section -->
+          <div class="analytics-charts-grid">
+            <div class="dashboard-card analytics-card">
+              <div class="card-header">
+                <h3>Focus Subject Breakdown</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pie-chart" aria-hidden="true" class="lucide lucide-pie-chart lucide-icon"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path></svg>
+              </div>
+              <div class="subject-pie-chart-wrapper" id="analytics-subject-breakdown-chart">
+                <!-- Dynamically populated SVG pie chart -->
+              </div>
+            </div>
+            
+            <div class="dashboard-card analytics-card">
+              <div class="card-header">
+                <h3>Daily Study Target Logs (Last 7 Days)</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar lucide-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+              </div>
+              <div class="weekly-milestone-grid" id="analytics-milestones">
+                <!-- Dynamic milestones list -->
+              </div>
+            </div>
+          </div>
+
+          <!-- History Logs List -->
+          <div class="dashboard-card full-width-card">
+            <div class="card-header">
+              <h3>Focus Session Log</h3>
+              <button class="btn btn-secondary btn-sm" id="clear-history-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2 lucide-icon"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Clear History
+              </button>
+            </div>
+            <div class="session-history-container">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Task / Topic</th>
+                    <th>Duration</th>
+                    <th>Type</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody id="history-table-body">
+                  <!-- Log entries added dynamically -->
+                </tbody>
+              </table>
+              <div class="list-placeholder" id="history-placeholder" style="display: none;">
+                No sessions completed yet. Head to the Focus Room to begin!
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. CHAT ROOM (FRIENDS) VIEW -->
+        <section id="view-friends" class="app-view">
+          <div class="friends-chat-layout" id="friends-chat-container">
+            <!-- Sidebar Pane -->
+            <div class="friends-sidebar">
+              <div class="friends-sidebar-header">
+                <h3>Chats</h3>
+                <button type="button" class="btn btn-secondary add-friend-btn" id="open-add-friend-btn" title="Add Contact">
+                  <i data-lucide="user-plus"></i>
+                  <span>Add Friend</span>
+                </button>
+              </div>
+              <div class="friends-search-wrapper">
+                <i data-lucide="search"></i>
+                <input type="text" id="friends-search" placeholder="Search or start new chat...">
+              </div>
+              <div class="contacts-list" id="contacts-list-container">
+                <!-- Contacts populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Chat Area Pane -->
+            <div class="friends-chat-area">
+              <!-- Empty State View -->
+              <div class="chat-empty-state" id="chat-empty-state-view">
+                <div class="empty-state-graphic">
+                  <i data-lucide="message-square"></i>
+                </div>
+                <h2>StudyFlow Chat Room</h2>
+                <p>Send and receive messages with your friends in real-time. Select a contact from the sidebar or click "Add Friend" to begin.</p>
+              </div>
+
+              <!-- Active Chat View -->
+              <div class="chat-active-panel" id="chat-active-panel-view" style="display: none;">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                  <button class="mobile-chat-back-btn" id="chat-mobile-back-btn" title="Back to Chats">
+                    <i data-lucide="arrow-left"></i>
+                  </button>
+                  <div class="chat-header-avatar" id="active-chat-avatar">U</div>
+                  <div class="chat-header-info">
+                    <h4 id="active-chat-username">Username</h4>
+                    <span class="chat-status" id="active-chat-status">
+                      <span class="status-dot"></span> Online
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Messages Feed -->
+                <div class="chat-messages-feed" id="chat-messages-feed-container">
+                  <!-- Messages populated dynamically -->
+                </div>
+
+                <!-- Chat Input Form -->
+                <form class="chat-input-form" id="friends-chat-form">
+                  <input type="text" id="friends-chat-input" placeholder="Type a message..." required autocomplete="off">
+                  <button type="submit" class="chat-send-btn" id="friends-chat-send-btn" title="Send Message">
+                    <i data-lucide="send"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. SETTINGS VIEW -->
+        <section id="view-settings" class="app-view">
+          <div class="settings-layout">
+            <!-- Settings sub-sidebar tabs -->
+            <div class="settings-sidebar">
+              <button class="settings-tab-btn active" id="btn-settings-profile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user lucide-icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Profile Settings</span>
+              </button>
+              <button class="settings-tab-btn" id="btn-settings-help">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="help-circle" aria-hidden="true" class="lucide lucide-help-circle lucide-icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+                <span>Help &amp; Guides</span>
+              </button>
+              <button class="settings-tab-btn" id="btn-settings-about">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" aria-hidden="true" class="lucide lucide-info lucide-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg>
+                <span>About the App</span>
+              </button>
+            </div>
+
+            <!-- Settings Content Panel -->
+            <div class="settings-content-card">
+              
+              <!-- PROFILE VIEW SUBTAB -->
+              <div class="settings-tab-content" id="settings-profile-content">
+                <div class="settings-section-header">
+                  <h3>Edit Profile Details</h3>
+                  <p>Update your email address or change your account security credentials.</p>
+                </div>
+                
+                <form id="settings-profile-form" class="settings-form">
+                  <div class="form-group">
+                    <label>Username (Primary Identity)</label>
+                    <input type="text" id="settings-username-display" disabled="" style="opacity: 0.6; cursor: not-allowed; background: var(--bg-primary);">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="settings-email-input">Email Address</label>
+                    <input type="email" id="settings-email-input" required="" placeholder="name@example.com">
+                  </div>
+                  
+                  <div class="settings-divider"></div>
+                  
+                  <div class="settings-section-header">
+                    <h4>Study Sessions &amp; Preferences</h4>
+                    <p style="font-size: 11px; color: var(--text-tertiary);">Customize session times and transition behaviors.</p>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                      <input type="checkbox" id="settings-auto-start" style="width: 18px; height: 18px; accent-color: #6c5ce7; cursor: pointer;">
+                      <span>Auto-start Breaks &amp; Focus Sessions (Pomodoro Technique)</span>
+                    </label>
+                  </div>
+
+                  <div class="form-row" style="margin-bottom: 16px;">
+                    <div class="form-group flex-1">
+                      <label for="settings-pomo-time">Focus Time (min)</label>
+                      <input type="number" id="settings-pomo-time" min="5" max="60" required="" style="width: 100%;">
+                    </div>
+                    <div class="form-group flex-1">
+                      <label for="settings-short-time">Short Break (min)</label>
+                      <input type="number" id="settings-short-time" min="1" max="30" required="" style="width: 100%;">
+                    </div>
+                    <div class="form-group flex-1">
+                      <label for="settings-long-time">Long Break (min)</label>
+                      <input type="number" id="settings-long-time" min="5" max="60" required="" style="width: 100%;">
+                    </div>
+                    <div class="form-group flex-1">
+                      <label for="settings-daily-goal">Daily Goal (min)</label>
+                      <input type="number" id="settings-daily-goal" min="30" max="480" required="" style="width: 100%;">
+                    </div>
+                  </div>
+
+                  <div class="settings-divider"></div>
+
+                  <details class="settings-details-dropdown">
+                    <summary>
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="settings-2" style="width: 16px; height: 16px; color: var(--accent-secondary);"></i>
+                        <span>More Settings</span>
+                      </div>
+                      <i data-lucide="chevron-down" style="width: 16px; height: 16px; transition: transform var(--transition-smooth);"></i>
+                    </summary>
+                    <div class="settings-details-dropdown-content">
+                      <p style="font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px;">Configure optional dashboard widget permissions.</p>
+                      <div class="form-group" style="margin-bottom: 0;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                          <input type="checkbox" id="settings-ambient-enabled" style="width: 18px; height: 18px; accent-color: #6c5ce7; cursor: pointer;">
+                          <span>Enable Ambient Sound Mixer in Focus Room</span>
+                        </label>
+                      </div>
+                      
+                      <div class="form-group" style="margin-bottom: 0; margin-top: 12px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                          <input type="checkbox" id="settings-tab-guard" style="width: 18px; height: 18px; accent-color: #6c5ce7; cursor: pointer;">
+                          <span>Strict Focus: Pause timer when switching tabs/apps</span>
+                        </label>
+                      </div>
+                      
+                      <div class="settings-divider" style="margin: 16px 0 12px;"></div>
+                      <p style="font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px;">Configure custom SMTP server details for OTP email delivery.</p>
+                      
+                      <div class="form-row" style="margin-bottom: 12px;">
+                        <div class="form-group flex-1">
+                          <label for="settings-smtp-server">SMTP Server</label>
+                          <input type="text" id="settings-smtp-server" placeholder="smtp.gmail.com" style="width: 100%;">
+                        </div>
+                        <div class="form-group" style="width: 100px;">
+                          <label for="settings-smtp-port">Port</label>
+                          <input type="number" id="settings-smtp-port" placeholder="587" style="width: 100%;">
+                        </div>
+                      </div>
+                      <div class="form-row" style="margin-bottom: 0;">
+                        <div class="form-group flex-1">
+                          <label for="settings-smtp-user">SMTP Email Address</label>
+                          <input type="email" id="settings-smtp-user" placeholder="your-email@gmail.com" style="width: 100%;">
+                        </div>
+                        <div class="form-group flex-1">
+                          <label for="settings-smtp-pass">SMTP App Password</label>
+                          <input type="password" id="settings-smtp-pass" placeholder="16-character app password" style="width: 100%;">
+                        </div>
+                      </div>
+
+                      <div class="settings-divider" style="margin: 16px 0 12px;"></div>
+                      <p style="font-size: 11px; color: var(--text-tertiary); margin-bottom: 12px;">Configure Google Gemini API for FlowAI Assistant capabilities.</p>
+                      
+                      <div class="form-row" style="margin-bottom: 0;">
+                        <div class="form-group flex-1">
+                          <label for="settings-gemini-key">Gemini API Key</label>
+                          <input type="password" id="settings-gemini-key" placeholder="AIzaSy..." style="width: 100%;">
+                        </div>
+                        <div class="form-group flex-1">
+                          <label for="settings-gemini-model">Gemini Model</label>
+                          <input type="text" id="settings-gemini-model" placeholder="gemini-2.5-flash" style="width: 100%;">
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+
+                  <div class="settings-divider"></div>
+                  
+                  <div class="settings-section-header">
+                    <h4>Security Credentials</h4>
+                    <p style="font-size: 11px; color: var(--text-tertiary);">Leave new password blank if you do not want to change your credentials.</p>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="settings-current-password">Current Password</label>
+                    <input type="password" id="settings-current-password" placeholder="Enter current password to authorize updates" required="">
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="form-group flex-1">
+                      <label for="settings-new-password">New Password</label>
+                      <input type="password" id="settings-new-password" placeholder="Min 6 characters">
+                    </div>
+                    <div class="form-group flex-1">
+                      <label for="settings-confirm-password">Confirm New Password</label>
+                      <input type="password" id="settings-confirm-password" placeholder="Confirm min 6 characters">
+                    </div>
+                  </div>
+                  
+                  <div class="settings-status-msg success" id="settings-success-msg" style="display: none;">Profile updated successfully!</div>
+                  <div class="settings-status-msg error" id="settings-error-msg" style="display: none;"></div>
+                  
+                  <button type="submit" class="btn btn-primary" style="margin-top: 10px; padding: 12px 24px;">Save Configuration</button>
+                </form>
+              </div>
+
+              <!-- HELP VIEW SUBTAB -->
+              <div class="settings-tab-content" id="settings-help-content" style="display: none;">
+                <div class="settings-section-header">
+                  <h3>StudyFlow Quick Documentation</h3>
+                  <p>Learn how to utilize StudyFlow's premium features to maximize your academic output.</p>
+                </div>
+                
+                <div class="faq-list">
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <span>How do I bind study sessions to specific tasks?</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down lucide-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                      Head to the **Focus Room** tab. In the right panel, look at the **Bind to Active Task** selector. Choose an active task from the list, and when your Pomodoro countdown finishes, the statistics (like completed Pomodoros tally) will be updated directly to that task on the **Study Planner** board!
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <span>What are the commands available in the Notes editor?</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down lucide-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                      Type <kbd>/</kbd> on a new block line to reveal the slash command menu. You can insert headings (H1, H2, H3), lists (Bulleted, Checklists), callouts (for highlights), pre-formatted code syntax blocks, and structural dividers. Pressing <kbd>Enter</kbd> inserts a new text block, and <kbd>Backspace</kbd> on a blank line deletes it.
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <span>How are study streaks calculated?</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down lucide-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                      Streaks are calculated based on your daily Pomodoro focus sessions. If you complete at least one focus session today or yesterday, your streak will keep burning! If you go a full day without studying, the streak count resets to 0.
+                    </div>
+                  </div>
+                  
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <span>Is my data stored securely online?</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down lucide-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                      Currently, StudyFlow is fully client-side. Your accounts, tasks, sessions, and private notes are stored locally in your browser's private `localStorage` database, meaning it is not synced to third-party servers. Passwords are cryptographically hashed using **SHA-256** to prevent plaintext leaks.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ABOUT VIEW SUBTAB -->
+              <div class="settings-tab-content" id="settings-about-content" style="display: none;">
+                <div class="settings-section-header">
+                  <h3>About StudyFlow Workspace</h3>
+                  <p>Learn more about StudyFlow's key features, design, and architecture.</p>
+                </div>
+                
+                <div class="about-container" style="font-family: var(--font-sans); color: var(--text-primary);">
+                  
+                  <!-- Hero Glassmorphism Card -->
+                  <div class="dashboard-card" style="padding: 24px; margin-bottom: 24px; text-align: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-md);">
+                    <div style="font-size: 40px; margin-bottom: 12px; color: var(--accent-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                    </div>
+                    <h2 style="font-size: 24px; font-weight: 700; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">StudyFlow Workspace</h2>
+                    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                      StudyFlow is a premium study companion designed to empower students to build disciplined habits, organize coursework, and maximize focus. Combining task planning, deep work timers, ambient soundtracks, and beautiful analytics, StudyFlow provides a cohesive local workstation for your academic success.
+                    </p>
+                  </div>
+
+                  <!-- Features Grid -->
+                  <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">Core Workspace Features</h4>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                    
+                    <!-- Planner -->
+                    <div class="dashboard-card" style="padding: 16px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="padding: 8px; background: rgba(var(--accent-primary-rgb), 0.1); border-radius: var(--radius-sm); color: var(--accent-primary); flex-shrink: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-square" class="lucide-icon"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"></path><path d="m9 11 3 3L22 4"></path></svg>
+                      </div>
+                      <div>
+                        <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); margin-top: 0;">Study Planner & Kanban</h5>
+                        <p style="font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 0;">
+                          Organize your assignments and study topics using a flexible board. Assign priority tags, estimated Pomodoros, and drag-and-drop tasks across workflow columns.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Focus Timer -->
+                    <div class="dashboard-card" style="padding: 16px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="padding: 8px; background: rgba(var(--accent-primary-rgb), 0.1); border-radius: var(--radius-sm); color: var(--accent-primary); flex-shrink: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" class="lucide-icon"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
+                      </div>
+                      <div>
+                        <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); margin-top: 0;">Focus Room & Ambient Mixer</h5>
+                        <p style="font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 0;">
+                          Dive into deep work with a Pomodoro timer backed by breathing animations. Customize your focus experience using a custom ambient mixer featuring Rain, Parisian Cafe, Binaural Waves, and Forest soundtracks.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Block Notes -->
+                    <div class="dashboard-card" style="padding: 16px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="padding: 8px; background: rgba(var(--accent-primary-rgb), 0.1); border-radius: var(--radius-sm); color: var(--accent-primary); flex-shrink: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" class="lucide-icon"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+                      </div>
+                      <div>
+                        <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); margin-top: 0;">Block Notes Workspace</h5>
+                        <p style="font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 0;">
+                          Compose your study notes with a rich text editor supporting block commands. Type <kbd>/</kbd> to insert headings, lists, checkbox tasks, info callouts, code syntax boxes, and dividers.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Analytics -->
+                    <div class="dashboard-card" style="padding: 16px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; gap: 12px; align-items: flex-start;">
+                      <div style="padding: 8px; background: rgba(var(--accent-primary-rgb), 0.1); border-radius: var(--radius-sm); color: var(--accent-primary); flex-shrink: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-2" class="lucide-icon"><path d="M5 21v-6"></path><path d="M12 21V3"></path><path d="M19 21V9"></path></svg>
+                      </div>
+                      <div>
+                        <h5 style="font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); margin-top: 0;">Productivity Analytics</h5>
+                        <p style="font-size: 12px; color: var(--text-tertiary); line-height: 1.5; margin: 0;">
+                          Visualize your focus progress. StudyFlow tracks your focus streaks, logs your daily study achievements, and plots subject breakdowns and weekly distributions using native SVG charts.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Tech Stack & Design Architecture -->
+                  <div class="dashboard-card" style="padding: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 24px;">
+                    <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-top: 0;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" class="lucide-icon" style="color: var(--accent-primary);"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M9 1v3"></path><path d="M15 1v3"></path><path d="M9 20v3"></path><path d="M15 20v3"></path><path d="M20 9h3"></path><path d="M20 15h3"></path><path d="M1 9h3"></path><path d="M1 15h3"></path></svg> Technology Stack & Architecture
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
+                      StudyFlow is engineered using fully client-side technologies to guarantee offline performance, data security, and instant response times:
+                    </p>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-tertiary); margin: 0;">
+                      <li style="display: flex; align-items: center; gap: 8px;">
+                        <span style="width: 5px; height: 5px; background: var(--accent-primary); border-radius: 50%;"></span>
+                        <strong>Structure & Style</strong>: Semantic HTML5 and CSS variables with full themes support (Dark, Light, Cozy Sepia).
+                      </li>
+                      <li style="display: flex; align-items: center; gap: 8px;">
+                        <span style="width: 5px; height: 5px; background: var(--accent-primary); border-radius: 50%;"></span>
+                        <strong>Application Logic</strong>: Vanilla ESM Javascript modules for component state management, router, and UI synchronization.
+                      </li>
+                      <li style="display: flex; align-items: center; gap: 8px;">
+                        <span style="width: 5px; height: 5px; background: var(--accent-primary); border-radius: 50%;"></span>
+                        <strong>Local Database</strong>: Multi-profile browser local storage integration with cryptographically hashed passwords (SHA-256).
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Version & License Footer -->
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-tertiary); padding: 8px 0; border-top: 1px solid var(--border-color);">
+                    <span>Version 1.0.0 (Stable Release)</span>
+                    <span>Released under MIT License</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Task Creation / Editing Modal Overlay -->
+  <div class="modal-overlay" id="task-modal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="task-modal-title">Create Study Task</h3>
+        <button class="btn-icon close-modal-btn" id="close-task-modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x lucide-icon"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      </div>
+      <form class="modal-form" id="task-modal-form">
+        <input type="hidden" id="task-modal-id">
+        <input type="hidden" id="task-modal-status" value="todo">
+        
+        <div class="form-group">
+          <label for="task-title-input">Task Title</label>
+          <input type="text" id="task-title-input" placeholder="e.g. Solve calculus assignment sheet 4" required="" autofocus="">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="task-subject-input">Subject Tag</label>
+            <input type="text" id="task-subject-input" placeholder="e.g. Maths, Biology, Coding" list="subjects-list">
+            <datalist id="subjects-list">
+              <option value="Mathematics">
+              </option><option value="Physics">
+              </option><option value="Chemistry">
+              </option><option value="Computer Science">
+              </option><option value="Biology">
+              </option><option value="Literature">
+            </option></datalist>
+          </div>
+          
+          <div class="form-group flex-1">
+            <label for="task-priority-input">Priority</label>
+            <select id="task-priority-input">
+              <option value="low">Low Priority</option>
+              <option value="medium" selected="">Medium Priority</option>
+              <option value="high">High Priority</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="task-pomos-input">Estimated Pomodoros (25m each)</label>
+            <div class="pomo-spinner">
+              <button type="button" class="spinner-btn" id="pomo-dec"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" aria-hidden="true" class="lucide lucide-minus lucide-icon"><path d="M5 12h14"></path></svg></button>
+              <input type="number" id="task-pomos-input" min="1" max="10" value="2">
+              <button type="button" class="spinner-btn" id="pomo-inc"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus lucide-icon"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
+            </div>
+          </div>
+          
+          <div class="form-group flex-1">
+            <label for="task-due-input">Due Date</label>
+            <input type="date" id="task-due-input">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close-modal-btn" id="cancel-task-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="save-task-btn">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Ambient audio HTML elements (Defunct - Synthesized programmatically via Web Audio API)
+  <audio id="audio-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2433/2433-200.wav" preload="auto"></audio>
+  <audio id="audio-cafe" loop src="https://assets.mixkit.co/active_storage/sfx/2447/2447-200.wav" preload="auto"></audio>
+  <audio id="audio-waves" loop src="https://assets.mixkit.co/active_storage/sfx/1188/1188-200.wav" preload="auto"></audio>
+  <audio id="audio-forest" loop src="https://assets.mixkit.co/active_storage/sfx/2568/2568-200.wav" preload="auto"></audio>
+  <audio id="audio-timer-alert" src="https://assets.mixkit.co/active_storage/sfx/911/911-200.wav" preload="auto"></audio>
+  -->
+
+  <!-- Fullscreen Authentication Portal Overlay -->
+  <div class="auth-overlay" id="auth-overlay" style="display: flex; opacity: 1;">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="logo">
+          <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" aria-hidden="true" class="lucide lucide-graduation-cap lucide-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg></div>
+          <span class="logo-text">StudyFlow</span>
+        </div>
+        <p class="auth-subtitle">Workspace Portal</p>
+      </div>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tab-login-btn">Log In</button>
+        <button class="auth-tab-btn" id="tab-signup-btn">Sign Up</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form class="auth-form" id="login-form" style="display: flex;">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" placeholder="Enter username" required="" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter password" required="" autocomplete="current-password">
+        </div>
+        <div class="login-options-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; margin-bottom: 16px; font-size: 12px; font-family: var(--font-sans);">
+          <label class="checkbox-container" style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-secondary); user-select: none;">
+            <input type="checkbox" id="login-stay-signed-in" style="width: 14px; height: 14px; accent-color: var(--accent-primary); cursor: pointer;">
+            <span>Stay signed in</span>
+          </label>
+          <a href="#" id="forgot-password-link" style="color: var(--accent-primary); text-decoration: none; font-weight: 500; transition: opacity var(--transition-smooth);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Forgot password?</a>
+        </div>
+        <div class="auth-error-msg" id="login-error" style="display: none;"></div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Access Workspace</button>
+      </form>
+      
+      <!-- Sign Up Form -->
+      <form class="auth-form" id="signup-form" style="display: none;">
+        <div class="form-group">
+          <label for="signup-username">Desired Username</label>
+          <input type="text" id="signup-username" placeholder="Create username" required="" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email Address</label>
+          <input type="email" id="signup-email" placeholder="student@university.edu" required="" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Create password" required="" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input type="password" id="signup-confirm-password" placeholder="Re-enter password" required="" autocomplete="new-password">
+        </div>
+        <div class="auth-error-msg" id="signup-error" style="display: none;"></div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Create Profile</button>
+      </form>
+
+      <!-- Forgot Password Panel -->
+      <form class="auth-form" id="forgot-password-form" style="display: none;">
+        <div class="otp-header" style="text-align: center; margin-bottom: 12px;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Recover Password</h3>
+          <p style="font-size: 12px; color: var(--text-tertiary);">Enter your registered username and email to receive a recovery code.</p>
+        </div>
+        <div class="form-group">
+          <label for="forgot-username">Username</label>
+          <input type="text" id="forgot-username" placeholder="Enter username" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="forgot-email">Email Address</label>
+          <input type="email" id="forgot-email" placeholder="student@university.edu" required autocomplete="email">
+        </div>
+        <div class="auth-error-msg" id="forgot-error" style="display: none;"></div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">Send Recovery Code</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="forgot-back-btn" style="margin-top: 14px; width: 100%; justify-content: center;">Back to Log In</button>
+      </form>
+
+      <!-- Reset Password Panel -->
+      <div class="auth-form" id="reset-password-panel" style="display: none;">
+        <div class="otp-header" style="text-align: center; margin-bottom: 12px;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Set New Password</h3>
+          <p style="font-size: 12px; color: var(--text-tertiary);">Enter the 6-digit recovery code and choose a new password.</p>
+        </div>
+        
+        <div class="otp-inputs-grid" style="display: flex; gap: 8px; justify-content: center; margin: 16px 0;">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+          <input type="text" class="reset-otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required style="width: 42px; height: 48px; border: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: var(--radius-sm); text-align: center; font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); outline: none; transition: var(--transition-smooth);">
+        </div>
+
+        <div class="form-group">
+          <label for="reset-new-password">New Password</label>
+          <input type="password" id="reset-new-password" placeholder="Min 6 characters" required autocomplete="new-password">
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="reset-confirm-password">Confirm New Password</label>
+          <input type="password" id="reset-confirm-password" placeholder="Re-enter new password" required autocomplete="new-password">
+        </div>
+        
+        <div class="auth-error-msg" id="reset-error" style="display: none;"></div>
+        <button type="button" class="btn btn-primary auth-submit-btn" id="reset-submit-btn">Reset Password & Login</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="reset-back-btn" style="margin-top: 14px; width: 100%; justify-content: center;">Cancel</button>
+      </div>
+
+      <!-- OTP Verification Panel -->
+      <div class="auth-form" id="otp-panel" style="display: none;">
+        <div class="otp-header" style="text-align: center; margin-bottom: 12px;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Confirm Your Email</h3>
+          <p style="font-size: 12px; color: var(--text-tertiary);">A 6-digit verification code was sent to <strong id="otp-email-display" style="color: var(--text-primary);"></strong></p>
+        </div>
+        
+        <div class="otp-inputs-grid" style="display: flex; gap: 8px; justify-content: center; margin: 16px 0;">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+          <input type="text" class="otp-input-box" maxlength="1" pattern="[0-9]" inputmode="numeric" required="">
+        </div>
+        
+        <div class="auth-error-msg" id="otp-error" style="display: none;"></div>
+        <button type="button" class="btn btn-primary auth-submit-btn" id="otp-verify-btn">Verify &amp; Create Account</button>
+        
+        <div class="otp-resend-row" style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-top: 14px; color: var(--text-secondary);">
+          <span>Didn't receive the code?</span>
+          <button type="button" class="otp-resend-btn" id="otp-resend-trigger" disabled="" style="background: transparent; border: none; color: var(--accent-primary); font-weight: 600; cursor: not-allowed; opacity: 0.6;">Resend in <span id="otp-timer">30</span>s</button>
+        </div>
+        
+        <button type="button" class="btn btn-secondary btn-sm" id="otp-back-btn" style="margin-top: 14px; width: 100%; justify-content: center;">Back to Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Friend Modal Overlay -->
+  <div class="modal-overlay" id="add-friend-modal" style="display: none;">
+    <div class="modal-card" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3>Add Classmate to Chats</h3>
+        <button class="btn-icon close-modal-btn" id="close-add-friend-modal"><i data-lucide="x"></i></button>
+      </div>
+      <form class="modal-form" id="add-friend-form">
+        <div class="form-group">
+          <label for="add-friend-username">Friend's Username</label>
+          <input type="text" id="add-friend-username" placeholder="Enter username exactly..." required autocomplete="off">
+        </div>
+        <div class="modal-error-msg" id="add-friend-error" style="display: none; color: #ff5a5a; font-size: 12px; margin-bottom: 12px;"></div>
+        <div class="modal-success-msg" id="add-friend-success" style="display: none; color: #4ade80; font-size: 12px; margin-bottom: 12px;"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-add-friend-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Friend</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Simulated Email Toast Notification -->
+  <div class="simulated-email-toast" id="simulated-email-toast" style="display: none;">
+    <div class="toast-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail lucide-icon"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+    </div>
+    <div class="toast-body">
+      <div class="toast-sender">📩 StudyFlow Verification Service</div>
+      <div class="toast-subject">Your One-Time Password (OTP) Code</div>
+      <div class="toast-content">
+        Your OTP code is <strong class="toast-otp-code" id="toast-otp-code">849203</strong>. Enter it to complete your profile registration.
+      </div>
+    </div>
+    <button class="toast-close-btn" id="toast-close-trigger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x lucide-icon"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+  </div>
+
+  <!-- Main JavaScript App module entry -->
+  <script type="module" src="src/js/app.js"></script>
+
+
+</body></html>
