@@ -38,7 +38,7 @@
   --border-color: rgba(255, 255, 255, 0.4);
   --text-primary: #111827;
   --text-secondary: #4b5563;
-  --text-tertiary: #9ca3af;
+  --text-tertiary: #6b7280;
   
   --accent-primary: #6d28d9;
   --accent-primary-rgb: 109, 40, 217;
@@ -56,7 +56,7 @@
   --border-color: rgba(93, 76, 50, 0.15);
   --text-primary: #586e75;
   --text-secondary: #657b83;
-  --text-tertiary: #93a1a1;
+  --text-tertiary: #7c8c8c;
   
   --accent-primary: #b58900;
   --accent-primary-rgb: 181, 137, 0;
@@ -92,21 +92,22 @@ body {
 
 /* Background Decorative Blobs */
 .blobblob {
-  display: none;
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
   z-index: -1;
-  opacity: 0.35;
-  transition: var(--transition-smooth);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
 [data-theme="light"] .blobblob,
 [data-theme="sepia"] .blobblob {
-  display: block;
+  opacity: var(--blob-opacity, 0.35);
 }
 
 .blob-1 {
+  --blob-opacity: 0.35;
   width: 600px;
   height: 600px;
   top: -200px;
@@ -116,6 +117,7 @@ body {
 }
 
 .blob-2 {
+  --blob-opacity: 0.35;
   width: 550px;
   height: 550px;
   bottom: -150px;
@@ -125,12 +127,12 @@ body {
 }
 
 .blob-3 {
+  --blob-opacity: 0.25;
   width: 500px;
   height: 500px;
   top: 30%;
   left: -200px;
   background: var(--accent-primary);
-  opacity: 0.25;
   animation: float-blob-3 20s infinite alternate ease-in-out;
 }
 
@@ -2519,14 +2521,15 @@ body {
   position: fixed;
   top: 24px;
   right: 24px;
-  width: 350px;
+  width: calc(100vw - 48px);
+  max-width: 350px;
   background: var(--bg-secondary);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--accent-secondary);
   border-radius: var(--radius-lg);
   padding: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--card-shadow);
   display: flex;
   gap: 12px;
   z-index: 10000; /* Extremely high priority overlay */
@@ -3690,6 +3693,8 @@ body {
 @media (max-width: 768px) {
   .friends-chat-layout {
     grid-template-columns: 1fr;
+    height: calc(100vh - 180px);
+    min-height: 400px;
   }
 
   .friends-sidebar {
@@ -4218,6 +4223,32 @@ input:-webkit-autofill:focus {
 /* Themed background for chat input wrappers */
 .chat-input-wrapper {
   background: var(--bg-secondary) !important;
+}
+
+/* Smooth theme-switching transitions on key layout components */
+body, 
+aside, 
+main, 
+header, 
+section, 
+.dashboard-card, 
+.stat-card, 
+.nav-btn, 
+.btn, 
+.theme-opt, 
+input, 
+select, 
+textarea, 
+.modal-card, 
+.onboarding-card, 
+.onboarding-opt-card, 
+.user-profile-widget, 
+.sound-channel, 
+.faq-item, 
+.ai-sidebar, 
+.card,
+.simulated-email-toast {
+  transition: background 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 
