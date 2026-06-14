@@ -1309,6 +1309,107 @@
     </div>
   </div>
 
+  <!-- Onboarding Survey Modal -->
+  <div class="modal-overlay" id="onboarding-modal" style="display: none; z-index: 100002;">
+    <div class="modal-card onboarding-card">
+      <div class="onboarding-glow"></div>
+      <div class="onboarding-glow-2"></div>
+      
+      <div class="onboarding-header">
+        <div class="onboarding-header-icon">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <h2>What brings you to StudyFlow?</h2>
+        <p>Select what you are studying or using this app for. Choose all that apply.</p>
+      </div>
+
+      <div class="onboarding-options-grid">
+        <div class="onboarding-opt-card" data-reason="School">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="book"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>School Student</h4>
+            <p>Middle school, high school, or standard school coursework.</p>
+          </div>
+        </div>
+
+        <div class="onboarding-opt-card" data-reason="University">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="graduation-cap"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>University Student</h4>
+            <p>Higher education lectures, assignments, and exams.</p>
+          </div>
+        </div>
+
+        <div class="onboarding-opt-card" data-reason="Job">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="briefcase"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>Working Professional</h4>
+            <p>Upskilling, studying for certifications, or job training.</p>
+          </div>
+        </div>
+
+        <div class="onboarding-opt-card" data-reason="Self-Learner">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="monitor"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>Self-Learner / Freelancer</h4>
+            <p>Coding, learning new skills, or independent projects.</p>
+          </div>
+        </div>
+
+        <div class="onboarding-opt-card" data-reason="Exam-Prep">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="target"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>Competitive Exam Prep</h4>
+            <p>Preparing for GRE, GMAT, MCAT, JEE, entrance tests, etc.</p>
+          </div>
+        </div>
+
+        <div class="onboarding-opt-card" data-reason="Hobbyist">
+          <div class="opt-card-checkbox">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="opt-card-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div class="opt-card-content">
+            <h4>Hobbyist / Personal Growth</h4>
+            <p>Reading, language learning, and personal enrichment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-footer">
+        <button type="button" class="btn btn-secondary" id="onboarding-skip-btn">Skip</button>
+        <button type="button" class="btn btn-primary" id="onboarding-submit-btn">Get Started</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Main JavaScript App module entry -->
   <script type="module" src="src/js/app.js"></script>
 </body>
